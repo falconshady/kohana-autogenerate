@@ -1,0 +1,1 @@
+<?php $view = new View('autogenerate/menu'); echo $view;?><div class="span10"></div>

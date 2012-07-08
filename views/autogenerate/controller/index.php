@@ -1,0 +1,1 @@
+<?php $view = new View('autogenerate/menu'); echo $view;?><div class="span10">	<h1>AutoGenerate Controller</h1>	<?php echo Form::open('autogenerate/controller/create'); ?>	<label>Nome da Classe:</label>	<input type="text" name="className" />	<p><input type="submit" name="create" value="Criar" class="btn btn-success" /></p>	<?php echo Form::close(); ?></div>
