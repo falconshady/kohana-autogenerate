@@ -1,5 +1,7 @@
 # Kohana AutoGenerate
 
+	Módulo incompleto, em estágio inicial.
+
 Este módulo cria Recursos (Scaffolds, Controllers, ORMs, Views) com Kohana através de interface Web com layout baseado no bootstrap do twitter.
 
 ## Requirements
