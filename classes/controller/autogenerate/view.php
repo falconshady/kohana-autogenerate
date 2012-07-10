@@ -25,6 +25,13 @@ class Controller_Autogenerate_View extends Controller_Template {
 		fwrite($f, $view->render());
 		fclose($f);
 		
+		$view = new View('autogenerate/view/create_show');
+		$view->className = $_POST['className'];
+		$filename = str_replace('\\', '/', APPPATH.'views/'.strtolower($_POST['className']).'/show.php');
+		$f = fopen($filename, 'w+');
+		fwrite($f, $view->render());
+		fclose($f);
+		
 		$view = new View('autogenerate/view/create_new');
 		$view->className = $_POST['className'];
 		$filename = APPPATH.'views/'.strtolower($_POST['className']).'/new.php';
