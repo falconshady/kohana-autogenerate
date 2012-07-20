@@ -1,0 +1,1 @@
+<?php $view = new View('autogenerate/menu'); echo $view;?><div class="span10">	<h1>AutoGenerate Migrate View</h1>		<p>Migrate: <?php echo $migrate->className; ?></p>	<p>Table: <?php echo $migrate->tableName; ?></p>	<p>Fields:</p>	<ul>	<?php foreach($migrate->fields as $field): ?>		<li><?php echo $field; ?></li>	<?php endforeach; ?>	</ul></div>
