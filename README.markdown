@@ -1,8 +1,8 @@
 # Kohana AutoGenerate
 
-	Módulo incompleto, em estágio inicial.
+	Mï¿½dulo incompleto, em estï¿½gio inicial.
 
-Este módulo cria Recursos (Scaffolds, Controllers, ORMs, Views) com Kohana através de interface Web com layout baseado no bootstrap do twitter.
+Este mï¿½dulo cria Recursos (Scaffolds, Controllers, ORMs, Views) com Kohana atravï¿½s de interface Web com layout baseado no bootstrap do twitter.
 
 ## Requirements
 
@@ -19,14 +19,25 @@ Este módulo cria Recursos (Scaffolds, Controllers, ORMs, Views) com Kohana atrav
 	http://localhost/seu-app/autogenerate/
 
 
-Com o Kohana-Generate você pode gerar código para o seu sistema. Caso os controllers, models e views já existam, eles serão re-escritos.
+### Create ORM example
+
+	http://localhost/seu-app/autogenerate/orm
+	Nome da classe: Product
+	Fields: name:string price:decimal(7,2) belongs_to:category:Category
+	Nome da classe: Order
+	Fields: belongs_to:user:User has_many:order_items:Order_Item
+	Nome da classe: Order_Item
+	Fields: count:integer belongs_to:order:Order belongs_to:product:Product
+
+
+Com o Kohana-Generate vocï¿½ pode gerar cï¿½digo para o seu sistema. Caso os controllers, models e views jï¿½ existam, eles serï¿½o re-escritos.
 
 ## Funcionalidades Iniciais
 
 * Gerar migrations
-* Gerar as tabelas no banco de dados relacionadas às migrations
+* Gerar as tabelas no banco de dados relacionadas ï¿½s migrations
 * Gerar controllers, models e views baseados nas migrations existentes
 
 # Funcionalidades Futuras
 
-* Gerar código de módulos da mesma forma que gera para application
+* Gerar cï¿½digo de mï¿½dulos da mesma forma que gera para application
