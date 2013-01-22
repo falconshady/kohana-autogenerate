@@ -33,7 +33,7 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 			endif;
 		endforeach;
 		
-		$filename = APPPATH.'classes/model/'.strtolower($_POST['className']).'.php';
+		$filename = APPPATH.'classes/Model/'.$_POST['className'].'.php';
 		$f = fopen($filename, 'w+');
 		fwrite($f, $view->render());
 		fclose($f);
