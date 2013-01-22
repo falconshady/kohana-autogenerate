@@ -37,7 +37,7 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 		$f = fopen($filename, 'w+');
 		fwrite($f, $view->render());
 		fclose($f);
-		$this->request->redirect('autogenerate/orm/index');
+		$this->redirect('autogenerate/orm/index');
 	}
 
 }
