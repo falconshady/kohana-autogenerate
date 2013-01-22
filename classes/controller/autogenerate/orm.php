@@ -19,15 +19,15 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 		$fields = explode(' ', $_POST['migrateFields']);
 		
 		foreach($fields as $field):
-			if(strstr($field, 'belongs_to')):
+			if(strstr('belongs_to', $field)):
 				list($name, $model) = explode(':', str_replace('belongs_to:', '', $field));
 				$view->belongs_to[$name] = array('model' => $model, 'foreign_key' => $model.'_id');
 			endif;
-			if(strstr($field, 'has_one')):
+			if(strstr('has_one', $field)):
 				list($name, $model) = explode(':', str_replace('has_one:', '', $field));
 				$view->has_one[$name] = array('model' => $model, 'foreign_key' => strtolower($_POST['className']).'_id');
 			endif;
-			if(strstr($field, 'has_many')):
+			if(strstr('has_many', $field)):
 				list($name, $model) = explode(':', str_replace('has_many:', '', $field));
 				$view->has_many[$name] = array('model' => $model, 'foreign_key' => strtolower($_POST['className']).'_id');
 			endif;
