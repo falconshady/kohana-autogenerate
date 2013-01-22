@@ -14,6 +14,7 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 	{
 		$view = new View('autogenerate/orm/create');
 		$view->className = $_POST['className'];
+		$view->tableName = $_POST['tableName'];
 		
 		$fields = explode(' ', $_POST['migrateFields']);
 		
