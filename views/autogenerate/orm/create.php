@@ -29,7 +29,7 @@ class Model_<?php echo $className; ?> extends ORM {
 		<?php endforeach; ?>
 	);
 	
-	public $_table_name = '<?php echo strtolower(Inflector::plural($className)); ?>';
+	public $_table_name = '<?=$tableName?>';
 	public $_primary_key = 'id';
 	
 }
