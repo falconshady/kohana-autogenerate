@@ -1,11 +1,12 @@
 # Kohana AutoGenerate
 
-	M�dulo incompleto, em est�gio inicial.
+	Incomplete module, in initial stage.
 
-Este m�dulo cria Recursos (Scaffolds, Controllers, ORMs, Views) com Kohana atrav�s de interface Web com layout baseado no bootstrap do twitter.
+This module add resources (Scaffolds, Controllers, ORMs, Views) with Kohana através of Web interface com layout baseado no bootstrap do twitter.
 
 ## Requirements
 
+* [Kohana v3.3]
 * [Kohana Database]
 * [Kohana ORM]
 * [Bootstrap from Twitter](http://twitter.github.com/bootstrap/) >= 2
@@ -15,7 +16,7 @@ Este m�dulo cria Recursos (Scaffolds, Controllers, ORMs, Views) com Kohana atr
 	copy kohana-generate/ modules/kohana-generate/
 	Altere o application/boostrap.php...
 	kohana::modules(array(..."kohana-generate" => MODPATH.'kohana-generate',...));
-	Acesse no navegador...
+	Accesse in navigator ...
 	http://localhost/seu-app/autogenerate/
 
 
