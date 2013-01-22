@@ -18,6 +18,10 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 		
 		$fields = explode(' ', $_POST['migrateFields']);
 		
+		$view->belongs_to = [];
+		$view->has_one = [];
+		$view->has_many = [];
+		
 		foreach($fields as $field):
 			if(strstr('belongs_to', $field)):
 				list($name, $model) = explode(':', str_replace('belongs_to:', '', $field));
