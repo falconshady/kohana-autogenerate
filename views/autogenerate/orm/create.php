@@ -1,6 +1,6 @@
 <?php echo '<?php'; ?>
 
-class Model_<?php echo $className; ?> extends ORM {
+class Model_<?=$className?> extends ORM {
 	
 	public $_belongs_to = array(
 		<?php foreach($belongs_to as $name => $belongs): ?>
