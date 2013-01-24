@@ -23,15 +23,15 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 		$view->has_many = [];
 		
 		foreach($fields as $field):
-			if(strstr('belongs_to', $field)):
+			if(strstr($field, 'belongs_to')):
 				list($name, $model) = explode(':', str_replace('belongs_to:', '', $field));
 				$view->belongs_to[$name] = array('model' => $model, 'foreign_key' => $model.'_id');
 			endif;
-			if(strstr('has_one', $field)):
+			if(strstr($field, 'has_one')):
 				list($name, $model) = explode(':', str_replace('has_one:', '', $field));
 				$view->has_one[$name] = array('model' => $model, 'foreign_key' => strtolower($_POST['className']).'_id');
 			endif;
-			if(strstr('has_many', $field)):
+			if(strstr($field, 'has_many')):
 				list($name, $model) = explode(':', str_replace('has_many:', '', $field));
 				$view->has_many[$name] = array('model' => $model, 'foreign_key' => strtolower($_POST['className']).'_id');
 			endif;
