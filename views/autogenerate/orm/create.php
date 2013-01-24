@@ -4,7 +4,7 @@ class Model_<?=$className?> extends ORM {
 	
 	public $_belongs_to = array(
 		<?php foreach($belongs_to as $name => $belongs): ?>
-		'<?=$name?>' = array(
+		'<?=$name?>' => array(
 			'model' => '<?=$belongs['model']?>',
 			'foreign_key' => '<?=$belongs['foreign_key']?>_id',
 		),
@@ -13,7 +13,7 @@ class Model_<?=$className?> extends ORM {
 	
 	public $_has_one = array(
 		<?php foreach($has_one as $name => $one): ?>
-		'<?=$name?>' = array(
+		'<?=$name?>' => array(
 			'model' => '<?=$one['model']?>',
 			'foreign_key' => '<?=$one['foreign_key']?>_id',
 		),
@@ -22,7 +22,7 @@ class Model_<?=$className?> extends ORM {
 	
 	public $_has_many = array(
 		<?php foreach($has_many as $name => $many): ?>
-		'<?=$name?>' = array(
+		'<?=$name?>' => array(
 			'model' => '<?=$many['model']?>',
 			'foreign_key' => '<?=$many['foreign_key']?>_id',
 		),
