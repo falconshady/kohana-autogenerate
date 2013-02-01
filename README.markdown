@@ -39,12 +39,16 @@ This module add resources (Scaffolds, Controllers, ORMs, Views) with Kohana atra
 
 With Kohana-AutoGenerate you have generate code for your system. Caso os controllers, models e views j� existam, eles ser�o re-escritos.
 
-## Funcionalidades Iniciais
+## Initial Release
 
+* Generate models ORM
+
+# Future Releases
+
+* Generate controllers
+* Generate views
 * Generate migrations
 * Generate tables in database
-* Gerar controllers, models e views baseados nas migrations existentes
-
-# Funcionalidades Futuras
-
+* Edit code in browser
+* Integration with GIT with shell (console/terminal)
 * Gerar c�digo de m�dulos da mesma forma que gera para application
