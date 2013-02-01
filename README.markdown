@@ -14,9 +14,9 @@ This module add resources (Scaffolds, Controllers, ORMs, Views) with Kohana atra
 ## Usage
 
 	copy kohana-generate/ modules/kohana-generate/
-	Altere o application/boostrap.php...
+	Edit the application/boostrap.php...
 	kohana::modules(array(..."kohana-generate" => MODPATH.'kohana-generate',...));
-	Accesse in navigator ...
+	Access in browser ...
 	http://localhost/seu-app/autogenerate/
 
 
@@ -25,18 +25,24 @@ This module add resources (Scaffolds, Controllers, ORMs, Views) with Kohana atra
 	http://localhost/seu-app/autogenerate/orm
 	Nome da classe: Product
 	Fields: name:string price:decimal(7,2) belongs_to:category:Category
+	Nome da classe: Category
+	Fields: name:string has_many:products:Product
 	Nome da classe: Order
 	Fields: belongs_to:user:User has_many:order_items:Order_Item
 	Nome da classe: Order_Item
 	Fields: count:integer belongs_to:order:Order belongs_to:product:Product
+	Nome da classe: Order_Payment_Type
+	Fields: belongs_to:order:Order many_many:payment_types:Payment_Type:orders_paymenttypes
+	Nome da classe: Payment_Type
+	Fileds: name:string many_many:orders:Order_Payment_Type:orders_paymenttypes
 
 
-Com o Kohana-Generate voc� pode gerar c�digo para o seu sistema. Caso os controllers, models e views j� existam, eles ser�o re-escritos.
+With Kohana-AutoGenerate you have generate code for your system. Caso os controllers, models e views j� existam, eles ser�o re-escritos.
 
 ## Funcionalidades Iniciais
 
-* Gerar migrations
-* Gerar as tabelas no banco de dados relacionadas �s migrations
+* Generate migrations
+* Generate tables in database
 * Gerar controllers, models e views baseados nas migrations existentes
 
 # Funcionalidades Futuras
