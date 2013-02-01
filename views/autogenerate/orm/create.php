@@ -24,7 +24,12 @@ class Model_<?=$className?> extends ORM {
 		<?php foreach($has_many as $name => $many): ?>
 		'<?=$name?>' => array(
 			'model' => '<?=$many['model']?>',
+			<?php if(isset($many['foreign_key'])):?>
 			'foreign_key' => '<?=$many['foreign_key']?>_id',
+			<?php endif; ?>
+			<?php if(isset($many['through'])):?>
+			'through' => '<?=$many['table']?>',
+			<?php endif; ?>
 		),
 		<?php endforeach; ?>
 	);
