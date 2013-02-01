@@ -31,9 +31,15 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 				list($name, $model) = explode(':', str_replace('has_one:', '', $field));
 				$view->has_one[$name] = array('model' => $model, 'foreign_key' => strtolower($_POST['className']).'_id');
 			endif;
+			//has_many:field:Model
 			if(strstr($field, 'has_many')):
 				list($name, $model) = explode(':', str_replace('has_many:', '', $field));
 				$view->has_many[$name] = array('model' => $model, 'foreign_key' => strtolower($_POST['className']).'_id');
+			endif;
+			//many_many:field:Model:table1_table2
+			if(strstr($field, 'many_many')):
+				list($name, $model, $table) = explode(':', str_replace('many_many:', '', $field));
+				$view->has_many[$name] = array('model' => $model, 'through' => $table);
 			endif;
 		endforeach;
 		
