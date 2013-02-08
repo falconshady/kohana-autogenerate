@@ -12,6 +12,8 @@ class Controller_Autogenerate_View extends Controller_Template {
 	
 	public function action_create()
 	{
+		$this->auto_render = FALSE;
+		
 		$directory = str_replace('\\', '/', APPPATH.'views/'.strtolower($_POST['className']).'/');
 		if(! file_exists($directory)):
 			mkdir($directory);
@@ -46,7 +48,10 @@ class Controller_Autogenerate_View extends Controller_Template {
 		fwrite($f, $view->render());
 		fclose($f);
 		
-		$this->request->redirect('autogenerate/view/index');
+		if($this->request->is_initial())
+			$this->request->redirect('autogenerate/view/index');
+		
+		return;
 	}
 
 }
