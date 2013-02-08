@@ -12,21 +12,19 @@ class Controller_Autogenerate_Scaffold extends Controller_Template {
 	
 	public function action_create()
 	{
-		$data = NULL;
-		
 		Request::factory('autogenerate/controller/create')
 			->method('POST')
-			->post($data)
+			->post($_POST)
 			->execute();
 		
 		Request::factory('autogenerate/orm/create')
 			->method('POST')
-			->post($data)
+			->post($_POST)
 			->execute();
 		
 		Request::factory('autogenerate/view/create')
 			->method('POST')
-			->post($data)
+			->post($_POST)
 			->execute();
 	
 		$this->request->redirect('autogenerate/scaffold/index');
