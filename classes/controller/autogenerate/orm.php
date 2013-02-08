@@ -43,7 +43,12 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 			endif;
 		endforeach;
 		
-		$filename = APPPATH.'classes/Model/'.$_POST['className'].'.php';
+		if(Kohana_Core::VERSION < 3.3):
+			$filename = APPPATH.'classes/model/'.strtolower($_POST['className']).'.php';
+		else:
+			$filename = APPPATH.'classes/Model/'.$_POST['className'].'.php';
+		endif;
+		
 		$f = fopen($filename, 'w+');
 		fwrite($f, $view->render());
 		fclose($f);
