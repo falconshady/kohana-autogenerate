@@ -6,7 +6,7 @@ class Model_<?=$className?> extends ORM {
 		<?php foreach($belongs_to as $name => $belongs): ?>
 		'<?=$name?>' => array(
 			'model' => '<?=$belongs['model']?>',
-			'foreign_key' => '<?=$belongs['foreign_key']?>_id',
+			'foreign_key' => '<?=$belongs['foreign_key']?>',
 		),
 		<?php endforeach; ?>
 	);
@@ -15,7 +15,7 @@ class Model_<?=$className?> extends ORM {
 		<?php foreach($has_one as $name => $one): ?>
 		'<?=$name?>' => array(
 			'model' => '<?=$one['model']?>',
-			'foreign_key' => '<?=$one['foreign_key']?>_id',
+			'foreign_key' => '<?=$one['foreign_key']?>',
 		),
 		<?php endforeach; ?>
 	);
@@ -25,7 +25,7 @@ class Model_<?=$className?> extends ORM {
 		'<?=$name?>' => array(
 			'model' => '<?=$many['model']?>',
 			<?php if(isset($many['foreign_key'])):?>
-			'foreign_key' => '<?=$many['foreign_key']?>_id',
+			'foreign_key' => '<?=$many['foreign_key']?>',
 			<?php endif; ?>
 			<?php if(isset($many['through'])):?>
 			'through' => '<?=$many['table']?>',
