@@ -13,6 +13,8 @@ class Controller_Autogenerate_Controller extends Controller_Template {
 	
 	public function action_create()
 	{
+		$this->auto_render = FALSE;
+		
 		$view = new View('autogenerate/controller/create');
 		
 		$view->className = $_POST['className'];
@@ -25,7 +27,11 @@ class Controller_Autogenerate_Controller extends Controller_Template {
 		
 		fclose($f);
 		
-		$this->request->redirect('autogenerate/controller/index');
+		
+		if($this->request->is_initial())
+			$this->request->redirect('autogenerate/controller/index');
+		
+		return;
 	}
 
 }
