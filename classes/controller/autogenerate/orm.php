@@ -12,6 +12,8 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 	
 	public function action_create()
 	{
+		$this->auto_render = FALSE;
+		
 		$view = new View('autogenerate/orm/create');
 		$view->className = $_POST['className'];
 		$view->tableName = $_POST['tableName'];
@@ -52,7 +54,11 @@ class Controller_Autogenerate_Orm extends Controller_Template {
 		$f = fopen($filename, 'w+');
 		fwrite($f, $view->render());
 		fclose($f);
-		$this->redirect('autogenerate/orm/index');
+		
+		if($this->request->is_initial())
+			$this->request->redirect('autogenerate/orm/index');
+		
+		return;
 	}
 
 }
