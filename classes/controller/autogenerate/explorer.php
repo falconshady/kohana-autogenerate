@@ -16,22 +16,26 @@ class Controller_Autogenerate_Explorer extends Controller_Template {
 		{
 			$filename = $this->request->post('filename');
 			//TODO: create file
+			$file = file($filename);
+			
 		}
 	}
 	
 	public function action_open()
 	{
-		
-	}
-	
-	public function action_edit()
-	{
-		
+		$view = View::factory('autogenerate/explorer/open');
+		$this->template->content = $view;
 	}
 	
 	public function action_update()
 	{
+		if($this->request->post())
+		{
+			
+		}
 		
+		$view = View::factory('autogenerate/explorer/open');
+		$this->template->content = $view;
 	}
 	
 	public function action_delete()
