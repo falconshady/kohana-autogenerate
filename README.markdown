@@ -42,13 +42,16 @@ With Kohana-AutoGenerate you have generate code for your system. Caso os control
 ## Initial Release
 
 * Generate models ORM
+* Generate (not functional) controllers
+* Generate (not functional) views
 
 # Future Releases
 
-* Generate controllers
-* Generate views
+* Generate functional controllers
+* Generate functional views
 * Generate migrations
 * Generate tables in database
+* Change tables in database
 * Edit code in browser
 * Integration with GIT with shell (console/terminal)
 * Gerar c�digo de m�dulos da mesma forma que gera para application
