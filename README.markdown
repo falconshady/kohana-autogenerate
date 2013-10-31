@@ -13,9 +13,9 @@ This module add resources (Scaffolds, Controllers, ORMs, Views) with Kohana atra
 
 ## Usage
 
-	copy kohana-generate/ modules/kohana-generate/
+	copy autogenerate/ modules/autogenerate/
 	Edit the application/boostrap.php...
-	kohana::modules(array(..."kohana-generate" => MODPATH.'kohana-generate',...));
+	kohana::modules(array(..."autogenerate" => MODPATH.'autogenerate',...));
 	Access in browser ...
 	http://localhost/seu-app/autogenerate/
 
