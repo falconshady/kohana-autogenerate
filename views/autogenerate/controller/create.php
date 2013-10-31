@@ -1,4 +1,5 @@
-<?php echo '<?php'; ?>
+<?php echo "<?php defined('SYSPATH') or die('No direct script access.');"; ?>
+<?php $object = strtolower($className); ?>
 
 class Controller_<?php echo $className; ?> extends Controller_Template {
 
@@ -6,68 +7,92 @@ class Controller_<?php echo $className; ?> extends Controller_Template {
 	
 	public function action_index()
 	{
-		$view = new View('<?php echo strtolower($className); ?>/index');
+		$view = new View('<?php echo $object; ?>/index');
 		
-		$view-><?php echo Inflector::plural(strtolower($className)); ?> = ORM::factory('<?php echo strtolower($className); ?>')->find_all();
+		$view-><?php echo Inflector::plural($object); ?> = ORM::factory('<?php echo $object; ?>')->find_all();
 		
 		$this->template->body = $view;
 	}
 	
-	public function action_new()
+	public function action_find()
 	{
-		$view = new View('<?php echo strtolower($className); ?>/new');
+		$view = new View('<?php echo $object; ?>/find');
+		
+		$this->template->body = $view;
+	}
+	
+	public function action_show()
+	{
+		$view = new View('<?php echo $object; ?>/show');
+		
+		$view-><?php echo $object; ?> = ORM::factory('<?php echo $object; ?>', $this->request->param('id'));
 		
 		$this->template->body = $view;
 	}
 	
 	public function action_create()
 	{
-		$<?php echo strtolower($className); ?> = ORM::factory('<?php echo strtolower($className); ?>');
+		$view = View::factory('<?php echo $object; ?>/create');
 		
-		$<?php echo strtolower($className); ?>->save();
+		$<?php echo $object; ?> = ORM::factory('<?php echo $object; ?>');
 		
-		$this->request->redirect('<?php echo strtolower($className); ?>/new');
-	}
-	
-	public function action_show()
-	{
-		$view = new View('<?php echo strtolower($className); ?>/show');
+		if($this->request->post())
+		{
+			<?php echo '<?php $attributes = $this->request->post(); ?>' ?>
+			<?php echo '<?php foreach($attributes as $index => $attribute): ?>' ?>
+				$<?php echo $object; ?>-><?php echo $index; ?> = <?php echo $attribute; ?>
+			<?php echo '<?php endforeach; ?>' ?>
+			
+			$<?php echo $object; ?>->save();
+		}
 		
-		$view-><?php echo strtolower($className); ?> = ORM::factory('<?php echo strtolower($className); ?>', $this->request->param('id'));
-		
-		$this->template->body = $view;
-	}
-	
-	public function action_edit()
-	{
-		$view = new View('<?php echo strtolower($className); ?>/edit');
-		
-		$view-><?php echo strtolower($className); ?> = ORM::factory('<?php echo strtolower($className); ?>', $this->request->param('id'));
+		$view-><?php echo $object; ?> = $<?php echo $object; ?>;
 		
 		$this->template->body = $view;
 	}
 	
 	public function action_update()
-	{	
-		$<?php echo strtolower($className); ?> = ORM::factory('<?php echo strtolower($className); ?>', $_POST['id']);
+	{
+		$view = View::factory('<?php echo $object; ?>/update');
 		
-		if($<?php echo strtolower($className); ?>->loaded())
+		$<?php echo $object; ?> = ORM::factory('<?php echo $object; ?>', $_POST['id']);
+			
+		if($<?php echo $object; ?>->loaded())
 		{
-			$<?php echo strtolower($className); ?>->save();
+		
+			if($this->request->post())
+			{
+				<?php echo '<?php $attributes = $this->request->post(); ?>' ?>
+				<?php echo '<?php foreach($attributes as $index => $attribute): ?>' ?>
+					$<?php echo $object; ?>-><?php echo $index; ?> = <?php echo $attribute; ?>
+				<?php echo '<?php endforeach; ?>' ?>
+				
+				$<?php echo $object; ?>->save();
+			}
+			
+			$view-><?php echo $object; ?> = $<?php echo $object; ?>;
 		}
 		
-		$this->request->redirect('<?php echo strtolower($className); ?>/edit/'.$<?php echo strtolower($className); ?>->id);
+		
+		$this->template->body = $view;
 	}
 	
 	public function action_delete()
 	{
-		$<?php echo strtolower($className); ?> = ORM::factory('<?php echo strtolower($className); ?>', $this->request->param('id'));
+		$view = View::factory('<?php echo $object; ?>/update');
+			
+		$<?php echo $object; ?> = ORM::factory('<?php echo $object; ?>', $this->request->param('id'));
 		
-		if($<?php echo strtolower($className); ?>->loaded())
+		if($<?php echo $object; ?>->loaded())
 		{
-			$<?php echo strtolower($className); ?>->delete();
+			if($this->request->post())
+			{
+				$<?php echo $object; ?>->delete();
+			}
+			
+			$view-><?php echo $object; ?> = $<?php echo $object; ?>;
 		}
 		
-		$this->request->redirect('<?php echo strtolower($className); ?>/index');
+		$this->template->body = $view;
 	}
 }
