@@ -27,6 +27,13 @@ class Controller_Autogenerate_View extends Controller_Template {
 		fwrite($f, $view->render());
 		fclose($f);
 		
+		$view = new View('autogenerate/view/create_find');
+		$view->className = $_POST['className'];
+		$filename = str_replace('\\', '/', APPPATH.'views/'.strtolower($_POST['className']).'/show.php');
+		$f = fopen($filename, 'w+');
+		fwrite($f, $view->render());
+		fclose($f);
+		
 		$view = new View('autogenerate/view/create_show');
 		$view->className = $_POST['className'];
 		$filename = str_replace('\\', '/', APPPATH.'views/'.strtolower($_POST['className']).'/show.php');
@@ -34,16 +41,23 @@ class Controller_Autogenerate_View extends Controller_Template {
 		fwrite($f, $view->render());
 		fclose($f);
 		
-		$view = new View('autogenerate/view/create_new');
+		$view = new View('autogenerate/view/create_create');
 		$view->className = $_POST['className'];
-		$filename = APPPATH.'views/'.strtolower($_POST['className']).'/new.php';
+		$filename = APPPATH.'views/'.strtolower($_POST['className']).'/create.php';
 		$f = fopen($filename, 'w+');
 		fwrite($f, $view->render());
 		fclose($f);
 		
-		$view = new View('autogenerate/view/create_edit');
+		$view = new View('autogenerate/view/create_update');
 		$view->className = $_POST['className'];
-		$filename = APPPATH.'views/'.strtolower($_POST['className']).'/edit.php';
+		$filename = APPPATH.'views/'.strtolower($_POST['className']).'/update.php';
+		$f = fopen($filename, 'w+');
+		fwrite($f, $view->render());
+		fclose($f);
+		
+		$view = new View('autogenerate/view/create_delete');
+		$view->className = $_POST['className'];
+		$filename = APPPATH.'views/'.strtolower($_POST['className']).'/delete.php';
 		$f = fopen($filename, 'w+');
 		fwrite($f, $view->render());
 		fclose($f);
