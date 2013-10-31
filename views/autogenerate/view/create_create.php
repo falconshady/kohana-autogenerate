@@ -1,5 +1,6 @@
 <h1>New <?php echo $className; ?></h1>
-<?php echo '<?php echo '; ?>Form::open('<?php echo strtolower($className); ?>/create');<?php echo '?>'; ?>
+<?php $object = strtolower($className); ?>
+<?php echo '<?php echo '; ?>Form::open('<?php echo $object; ?>/create');<?php echo '?>'; ?>
 <?php
 /**
 foreach($fields as $field): ?>
