@@ -28,6 +28,14 @@ class Controller_Autogenerate_View extends Controller_Template {
 		fwrite($f, $view->render());
 		fclose($f);
 		
+		//create list view
+		$view = new View('autogenerate/view/create_list');
+		$view->className = $_POST['className'];
+		$filename = str_replace('\\', '/', APPPATH.'views/'.strtolower($_POST['className']).'/_list.php');
+		$f = fopen($filename, 'w+');
+		fwrite($f, $view->render());
+		fclose($f);
+		
 		//create find view
 		$view = new View('autogenerate/view/create_find');
 		$view->className = $_POST['className'];
@@ -40,6 +48,14 @@ class Controller_Autogenerate_View extends Controller_Template {
 		$view = new View('autogenerate/view/create_show');
 		$view->className = $_POST['className'];
 		$filename = str_replace('\\', '/', APPPATH.'views/'.strtolower($_POST['className']).'/show.php');
+		$f = fopen($filename, 'w+');
+		fwrite($f, $view->render());
+		fclose($f);
+		
+		//crate form view
+		$view = new View('autogenerate/view/create_form');
+		$view->className = $_POST['className'];
+		$filename = APPPATH.'views/'.strtolower($_POST['className']).'/_form.php';
 		$f = fopen($filename, 'w+');
 		fwrite($f, $view->render());
 		fclose($f);
