@@ -5,6 +5,11 @@ class Controller_<?php echo $className; ?> extends Controller_Template {
 
 	public $template = 'index';
 	
+	public function before()
+	{
+		parent::before();
+	}
+	
 	public function action_index()
 	{
 		$view = new View('<?php echo $object; ?>/index');
@@ -94,5 +99,12 @@ class Controller_<?php echo $className; ?> extends Controller_Template {
 		}
 		
 		$this->template->body = $view;
+	}
+	
+	
+	//after method
+	public function after()
+	{
+		parent::after();
 	}
 }
