@@ -19,6 +19,11 @@ class Controller_Autogenerate_Controller extends Controller_Template {
 		
 		$view->className = $this->request->post('className');
 		
+		$migrateFields = $this->request->post('migrateFields');
+		$migrateFields = explode(' ', $migrateFields);
+		
+		$view->migrateFields = $migrateFields;
+		
 		$filename = APPPATH.'classes/controller/'.strtolower($_POST['className']).'.php';
 		
 		$f = fopen($filename, 'w+');
