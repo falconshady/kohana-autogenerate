@@ -6,7 +6,7 @@ class Controller_Autogenerate_Controller extends Controller_Template {
 
 	public function action_index()
 	{
-		$view = new View('autogenerate/controller/index');
+		$view = View::factory('autogenerate/controller/index');
 		
 		$this->template->body = $view;
 	}
@@ -17,7 +17,7 @@ class Controller_Autogenerate_Controller extends Controller_Template {
 		
 		$view = new View('autogenerate/controller/create');
 		
-		$view->className = $_POST['className'];
+		$view->className = $this->request->post('className');
 		
 		$filename = APPPATH.'classes/controller/'.strtolower($_POST['className']).'.php';
 		
