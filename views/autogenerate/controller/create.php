@@ -43,10 +43,20 @@ class Controller_<?php echo $className; ?> extends Controller_Template {
 		
 		if($this->request->post())
 		{
-			<?php echo '<?php $attributes = $this->request->post(); ?>' ?>
-			<?php echo '<?php foreach($attributes as $index => $attribute): ?>' ?>
-				$<?php echo $object; ?>-><?php echo $index; ?> = <?php echo $attribute; ?>
-			<?php echo '<?php endforeach; ?>' ?>
+			<?php
+			$attributes = $this->request->post('migrateFields');
+			
+			foreach($attributes as $attribute):
+				
+				list($index, $attribute) = explode(':', $atribute); 
+				if($index ! in_array('belongs_to', 'has_many', 'has_one')):
+			?>
+			$<?php echo $object,'->',$index,' = ',$attribute, '\n'; ?>
+			<?php
+				endif;
+				
+			endforeach;
+			?>
 			
 			$<?php echo $object; ?>->save();
 		}
