@@ -1,9 +1,9 @@
 <?php echo "<?php defined('SYSPATH') or die('No direct script access.');"; ?>
 <?php $object = strtolower($className); ?>
 
-class Controller_<?php echo $className; ?> extends Controller_Template {
+class Controller_<?php if(isset($moduleName)) echo "_{$moduleName}"; ?><?php echo $className; ?> extends Controller_Template {
 
-	public $template = 'index';
+	public $template = 'default/layout/index';
 	
 	public function before()
 	{
@@ -22,6 +22,15 @@ class Controller_<?php echo $className; ?> extends Controller_Template {
 	public function action_find()
 	{
 		$view = new View('<?php echo $object; ?>/find');
+		
+		if($this->request->post())
+		{
+			$<?php echo Inflector::plural($object); ?> = ORM::factory('<?php echo $object; ?>')
+				->where('name', 'LIKE', "%{$this->request->post('find')}%")
+				->find_all();
+			
+			$view-><?php echo Inflector::plural($object); ?>  = $<?php echo Inflector::plural($object); ?>;
+		}
 		
 		$this->template->body = $view;
 	}
@@ -98,14 +107,17 @@ class Controller_<?php echo $className; ?> extends Controller_Template {
 			
 		$<?php echo $object; ?> = ORM::factory('<?php echo $object; ?>', $this->request->param('id'));
 		
-		if($<?php echo $object; ?>->loaded())
+		if($this->request->post())
 		{
-			if($this->request->post())
+			if($<?php echo $object; ?>->loaded())
 			{
-				$<?php echo $object; ?>->delete();
+				if($this->request->post())
+				{
+					$<?php echo $object; ?>->delete();
+				}
+				
+				$view-><?php echo $object; ?> = $<?php echo $object; ?>;
 			}
-			
-			$view-><?php echo $object; ?> = $<?php echo $object; ?>;
 		}
 		
 		$this->template->body = $view;
